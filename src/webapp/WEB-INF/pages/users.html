@@ -18,46 +18,43 @@
                 <th>id</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
+                <th></th>
+                <th></th>
             </tr>
             <tr th:each="user : ${users}">
+
                 <td th:text="${user.id}"></td>
-                <td th:text="${user.firstName}"></td>
-                <td th:text="${user.lastName}"></td>
+                <td>
+                    <input id="fromName" oninput="sendInput(this, '.name')" type="text" name="firstName"
+                        th:value="${user.firstName}">
+                </td>
+                <td>
+                    <input oninput="sendInput(this, '.surname')" type="text" name="lastName"
+                        th:value="${user.lastName}">
+                </td>
+                <td>
+                    <form method="post" th:action="@{/users/update}" th:object="${user}">
+                        <input type="hidden" name="id" th:value="${user.id}">
+                        <input class="name" type="hidden" name="firstName" th:value="${user.firstName}">
+                        <input class="surname" type="hidden" name="lastName" th:value="${user.lastName}">
+                        <input class="update" type="submit" value="Save">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" th:action="@{/users/remove}" th:object="${id}">
+                        <input type="hidden" name="id" th:value="${user.id}">
+                        <input class="remove" type="submit" value="Remove">
+                    </form>
+                </td>
             </tr>
         </table>
-        <div>
-            <p><b>Выберите действие:</b></p>
-            <input name="act" type="radio" value="add" checked onChange="funcSelect(this)"> Добавить |
-            <input name="act" type="radio" value="update" onChange="funcSelect(this)"> Изменить |
-            <input name="act" type="radio" value="remove" onChange="funcSelect(this)"> Удалить
-        </div>
 
         <div id="block_add">
             <h3>Добавление пользователя:</h3>
             <form method="post" th:action="@{/users/add}" th:object="${user}">
                 <p class="p1">Имя: <input type="text" name="firstName"></p>
                 <p class="p1">Фамилия: <input type="text" name="lastName"></p>
-                <input type="submit" value="Add user">
-            </form>
-        </div>
-
-        <div id="block_update">
-            <h3>Изменение пользователя:</h3>
-            <form method="post" th:action="@{/users/update}" th:object="${user}">
-                <p>Введите id изменяемого пользователя:</p>
-                <p class="p1"><input type="text" name="id"></p>
-                <p class="p1">Новое имя: <input type="text" name="firstName"></p>
-                <p class="p1">Новя фамилия: <input type="text" name="lastName"></p>
-                <input type="submit" value="Update user">
-            </form>
-        </div>
-
-        <div id="block_remove">
-            <h3>Удаление пользователя:</h3>
-            <form method="post" th:action="@{/users/remove}" th:object="${id}">
-                <p>Введите индекс пользователя:</p>
-                <p class="p1">Индекс: <input type="text" name="id"></p>
-                <input type="submit" value="Remove user">
+                <input class="add" type="submit" value="Add user">
             </form>
         </div>
     </div>

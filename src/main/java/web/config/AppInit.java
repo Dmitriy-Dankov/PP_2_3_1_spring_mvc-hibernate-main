@@ -15,13 +15,12 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class<?>[]{
-                JavaConfig.class
+                WebConfig.class
         };
     }
 
 
     /* Данный метод указывает url, на котором будет базироваться приложение */
-    @SuppressWarnings("null")
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};

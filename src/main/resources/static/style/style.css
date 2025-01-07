@@ -17,41 +17,50 @@ h2 {
 }
 
 table {
-    width: 400px;
+    width: 480px;
     border: 1px solid #404040;
     border-collapse: collapse;
 }
 
-tr th {
+tr, th, td {
     border: 1px solid #404040;
-}
-
-td {
-    border: 1px solid #404040;
-    padding-left: 10px;
-}
-
-#block_update, #block_remove {
-	display: none;
+    padding: 0 5px;
 }
 
 .p1 {
-	text-align-last: justify;
-	width: 250px;	
+    width: 250px;
+    text-align-last: justify;
+}
+
+.update, .remove {
+	height: 28px;
+	width: 90px;
+	border: 0px;
+    background: none;
+}
+
+.update:hover, .remove:hover {
+    color: #404040;
+}
+
+.add {
+	height: 28px;
+	width: 90px;
+	border: 0px;
+    border-radius: 8px;
+    background: #404040;
+    color: white;
+}
+
+.add:hover {
+	background: #555555;
 }
 
 input[type="text"] {
     text-align-last: left;
 }
 
-input[type=submit] {
-	height: 28px;
-	width: 90px;
-	background: #b0b0b0;
-	border-radius: 8px;
-	border: 0px;
-}
-
-input[type=submit]:hover {
-	background: #a0a0a0;
+table input[type="text"] {
+    border: none;
+    background: lightgray;
 }
